@@ -25,14 +25,17 @@ RECIPIENT INBOX (shivamgarg1515@gmail.com)
 
 ---
 
-## 2. Form Fields Specification
+## 2. Form Fields Specification (Compact Recruiter Layout)
 
 | Field Name | HTML Tag | Type | Required | Purpose |
 | :--- | :--- | :--- | :--- | :--- |
 | `name` | `<input>` | `text` | **Yes** | Visitor / Recruiter full name. |
-| `email` | `<input>` | `email` | **Yes** | Reply-to email address for communication. |
-| `subject` | `<input>` | `text` | **Yes** | Subject line of the inquiry or opportunity. |
-| `message` | `<textarea>` | `text` | **Yes** | Body content of the message. |
+| `email` | `<input>` | `email` | **Yes** | Reply-to email address for direct follow-up. |
+| `message` | `<textarea>` | `text` | **Yes** | Project description, open role inquiry, or message. |
+
+### Quick CTAs:
+- **Hire Me**: Smoothly anchors to `#portfolio-contact-form`.
+- **Email Me**: Opens default mail client to `mailto:shivamgarg1515@gmail.com`.
 
 ---
 

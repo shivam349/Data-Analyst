@@ -105,10 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
+  });
+
   // 6. Contact Form Ajax Submission with Graceful Fallback
   const contactForm = document.getElementById('portfolio-contact-form');
-  const submitBtn = document.getElementById('form-submit-btn');
-  const statusAlert = document.getElementById('form-status-alert');
+  const submitBtn = document.getElementById('contact-submit-btn');
+  const statusAlert = document.getElementById('contact-form-status');
 
   if (contactForm && submitBtn) {
     contactForm.addEventListener('submit', async (e) => {
