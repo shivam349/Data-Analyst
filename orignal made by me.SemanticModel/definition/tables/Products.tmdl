@@ -1,0 +1,102 @@
+table Products
+	lineageTag: 488f16a6-3435-4bc8-a2eb-98a041ca621e
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 2b81e2c3-c7d9-4ea0-b13e-00b911d649c1
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: 56315d3d-7b6c-4017-9c93-e605a730b011
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Brand
+		dataType: string
+		lineageTag: 83fca527-34f0-4dcc-9290-41fd56bbabc3
+		summarizeBy: none
+		sourceColumn: Brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: 878563e2-ee6a-4bd6-b706-4bb948b216d4
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Cost USD'
+		dataType: string
+		lineageTag: 54771bf0-50d9-44ca-b3df-cbdfb6a54837
+		summarizeBy: none
+		sourceColumn: Unit Cost USD
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Price USD'
+		dataType: string
+		lineageTag: 1c8d351b-4524-438f-8688-636e330d8845
+		summarizeBy: none
+		sourceColumn: Unit Price USD
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubcategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 224d3eb2-73ba-403b-8a0b-d9afb37ded76
+		summarizeBy: none
+		sourceColumn: SubcategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcategory
+		dataType: string
+		lineageTag: f99d50e1-a3f3-4e48-b871-4a44be0ad598
+		summarizeBy: none
+		sourceColumn: Subcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: db2be4bf-6b4c-47d7-9a8f-a57357c885d0
+		summarizeBy: none
+		sourceColumn: CategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: a2f4b063-9ce9-4396-a481-92ac798f02fb
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Products = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\sbixb\Downloads\Global+Electronics+Retailer\Products.csv"),[Delimiter=",", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductKey", Int64.Type}, {"Product Name", type text}, {"Brand", type text}, {"Color", type text}, {"Unit Cost USD", type text}, {"Unit Price USD", type text}, {"SubcategoryKey", Int64.Type}, {"Subcategory", type text}, {"CategoryKey", Int64.Type}, {"Category", type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type",{{"Unit Cost USD", Text.Trim, type text}, {"Unit Price USD", Text.Trim, type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Trimmed Text","$","",Replacer.ReplaceText,{"Unit Cost USD", "Unit Price USD"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

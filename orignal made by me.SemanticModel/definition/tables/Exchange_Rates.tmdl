@@ -1,0 +1,41 @@
+table Exchange_Rates
+	lineageTag: c6e9028c-c05f-45dd-a752-39f493725580
+
+	column Date
+		dataType: string
+		lineageTag: a7927558-6965-4dd5-b8f3-ea0c927670eb
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		lineageTag: 163d56da-80d7-4a56-a60a-666452929ee4
+		summarizeBy: none
+		sourceColumn: Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Exchange
+		dataType: double
+		lineageTag: 27e1c020-3f2b-4994-9816-ae00d9c21fee
+		summarizeBy: sum
+		sourceColumn: Exchange
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Exchange_Rates = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\sbixb\Downloads\Global+Electronics+Retailer\Exchange_Rates.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type text}, {"Currency", type text}, {"Exchange", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

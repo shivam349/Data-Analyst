@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shivam Garg | Power BI & Data Analyst Portfolio</title>
+  <meta name="description" content="Production Power BI, DAX, Power Query and SQL companion portfolio project by Shivam Garg analyzing Global Electronics Retailer performance.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <span class="logo-badge">BI</span>
+        <span>Shivam Garg</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#powerbi-live">Live Report</a></li>
+        <li><a href="#dashboards">Dashboards</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#dax">DAX Logic</a></li>
+        <li><a href="#sql">SQL Analysis</a></li>
+        <li><a href="#insights">Insights</a></li>
+        <li><a href="#docs">Docs</a></li>
+      </ul>
+      <a href="https://github.com/shivam349/Data-Analyst" target="_blank" class="nav-cta">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        GitHub Repo
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="overview">
+    <div class="container hero-content">
+      <div class="hero-pill">
+        <span>⚡ End-to-End Business Intelligence Portfolio</span>
+      </div>
+      <h1 class="hero-title">Shivam Garg</h1>
+      <div class="hero-subtitle">Data Analyst | Power BI | SQL | DAX | Business Intelligence</div>
+      <p class="hero-desc">
+        Production-grade commercial analytics and omnichannel business intelligence for a global consumer electronics enterprise. Featuring 17 verified DAX measures, Microsoft Fabric PBIP modeling, and a 35-query SQL companion suite.
+      </p>
+      <div class="hero-actions">
+        <a href="#powerbi-live" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          Explore Interactive Report
+        </a>
+        <a href="#sql" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          View SQL Companion
+        </a>
+        <a href="mailto:shivamgarg1515@gmail.com" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Contact Shivam
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KPI Banner -->
+  <section class="kpi-banner">
+    <div class="container">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Total Revenue</div>
+          <div class="kpi-value">$55.76M</div>
+          <div class="kpi-sub">Across 62.8K Line Items</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Gross Margin %</div>
+          <div class="kpi-value">58.58%</div>
+          <div class="kpi-sub">$32.66M Gross Profit</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Total Orders</div>
+          <div class="kpi-value">26,326</div>
+          <div class="kpi-sub">Avg Order Value: $2,117.89</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Repeat Purchase Rate</div>
+          <div class="kpi-value">61.18%</div>
+          <div class="kpi-sub">7,272 Repeat Buyers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Power BI Live Section -->
+  <section class="powerbi-section" id="powerbi-live">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Direct Report Presentation</span>
+        <h2 class="section-title">Live Power BI Dashboard</h2>
+        <p class="section-desc">
+          Interactive report embedded directly from Power BI Service. Filter across product categories, store footprints, and customer demographics.
+        </p>
+      </div>
+
+      <div class="embed-container-wrapper">
+        <div class="embed-toolbar">
+          <div class="embed-title-group">
+            <div class="embed-dot"></div>
+            <div class="embed-title">Global Electronics Retailer — Executive Suite (3 Pages)</div>
+          </div>
+          <div class="embed-status">
+            <span class="pulse-dot"></span>
+            <span>PBIP Tabular Semantic Model Active</span>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- POWER BI EMBED START -->
+        <!-- ============================================================ -->
+        <div id="powerbi-live-embed" class="embed-wrapper">
+          <!-- REAL POWER BI EMBED HTML WILL BE INSERTED HERE -->
+          <div class="embed-placeholder">
+            <div class="placeholder-icon">
+              <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3>Live Interactive Power BI Report</h3>
+            <p>
+              The live interactive Power BI iframe embed will be inserted directly inside this container.<br>
+              In the meantime, explore the high-resolution report walkthroughs, DAX measures, and SQL companion below!
+            </p>
+            <div class="embed-status">
+              <span class="pulse-dot"></span>
+              <span>Awaiting Power BI Service Embed HTML</span>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================ -->
+        <!-- POWER BI EMBED END -->
+        <!-- ============================================================ -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Report Screenshots Showcase -->
+  <section class="showcase-section" id="dashboards">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Visual Walkthrough</span>
+        <h2 class="section-title">Report Architecture & Pages</h2>
+        <p class="section-desc">
+          Click any report page below to view full 1080p high-resolution details and visual layouts.
+        </p>
+      </div>
+
+      <div class="reports-tabs">
+        <button class="tab-btn active" data-target="tab-p1">Page 1: Executive Overview</button>
+        <button class="tab-btn" data-target="tab-p2">Page 2: Customer & Product Intelligence</button>
+        <button class="tab-btn" data-target="tab-p3">Page 3: Store, Channel & Fulfillment</button>
+      </div>
+
+      <!-- Tab 1 -->
+      <div class="tab-content active" id="tab-p1">
+        <div class="screenshot-card">
+          <div class="screenshot-img-wrapper">
+            <img src="Assets/Screenshots/Executive_Overview.jpg" alt="Executive Overview Dashboard" class="screenshot-img">
+            <div class="screenshot-overlay">
+              <span class="zoom-badge">🔍 Click to Expand Full Resolution</span>
+            </div>
+          </div>
+          <div class="screenshot-info">
+            <h3>Executive Overview</h3>
+            <p>
+              Provides leadership with high-level visibility into enterprise sales ($55.76M), gross profit ($32.66M), monthly multi-year growth trajectory, product category splits, and top revenue-generating retail outlets.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2 -->
+      <div class="tab-content" id="tab-p2">
+        <div class="screenshot-card">
+          <div class="screenshot-img-wrapper">
+            <img src="Assets/Screenshots/Customer_Product_Intelligence.jpg" alt="Customer & Product Intelligence Dashboard" class="screenshot-img">
+            <div class="screenshot-overlay">
+              <span class="zoom-badge">🔍 Click to Expand Full Resolution</span>
+            </div>
+          </div>
+          <div class="screenshot-info">
+            <h3>Customer & Product Intelligence</h3>
+            <p>
+              Detailed demographic segmentation (age groups, gender), basket analysis ($2,117.89 AOV), brand contributions (Contoso, Litware, Fabrikam), and SKU-level profit margin leaderboards.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3 -->
+      <div class="tab-content" id="tab-p3">
+        <div class="screenshot-card">
+          <div class="screenshot-img-wrapper">
+            <img src="Assets/Screenshots/Store_Channel_Fulfillment.jpg" alt="Store Channel & Fulfillment Dashboard" class="screenshot-img">
+            <div class="screenshot-overlay">
+              <span class="zoom-badge">🔍 Click to Expand Full Resolution</span>
+            </div>
+          </div>
+          <div class="screenshot-info">
+            <h3>Store, Channel & Fulfillment</h3>
+            <p>
+              Omnichannel split (79.6% Physical vs 20.4% Online), retail floor space productivity ($479.24/m²), store size elasticity scatter analysis, and international delivery lead time distribution (4.53 days average).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture & Data Model -->
+  <section class="showcase-section" id="architecture" style="background: rgba(17, 24, 39, 0.3);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Engineering Foundation</span>
+        <h2 class="section-title">Architecture & Star Schema</h2>
+        <p class="section-desc">
+          Strict dimensional modeling principles ensuring rapid VertiPaq memory compression and sub-second visual rendering.
+        </p>
+      </div>
+
+      <div class="dual-grid">
+        <div class="glass-card">
+          <h3>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--pbi-yellow)" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            Data Pipeline Architecture
+          </h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            Extract, Transform, and Load pipeline verified from source CSV files to final interactive visualization:
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; background: #0b0f19; padding: 18px; border-radius: 8px; border: 1px solid var(--card-border); line-height: 1.8;">
+            <span style="color: var(--pbi-yellow);">CSV SOURCE</span> (62.8K Sales, 15.2K Cust, 2.5K Prod)<br>
+            &nbsp;&nbsp;↓ (Power Query M Language Transformations)<br>
+            <span style="color: var(--accent-emerald);">ETL NORMALIZATION</span> (Types, Culture Dates, Cleansing)<br>
+            &nbsp;&nbsp;↓ (In-Memory VertiPaq Tabular Engine)<br>
+            <span style="color: var(--accent-blue);">SEMANTIC MODEL</span> (Star Schema: 1 Fact, 4 Dims)<br>
+            &nbsp;&nbsp;↓ (17 Verified Business Measures)<br>
+            <span style="color: var(--accent-purple);">DAX ANALYTICS</span> (Iterators, Ratios, Time Intel)<br>
+            &nbsp;&nbsp;↓ (1920x1080 Interactive Storytelling)<br>
+            <span style="color: #ffffff;">POWER BI REPORT</span> (3 Pages, 32 Visuals)
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--accent-blue)" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+            Kimball Star Schema Topology
+          </h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            Optimized single-direction relationships eliminating ambiguity and synthetic cross-join traps:
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="background: rgba(255,255,255,0.03); padding: 10px 14px; border-radius: 6px; border-left: 3px solid var(--pbi-yellow); font-size: 0.9rem;">
+              <strong>Fact Table:</strong> <code>Sales</code> (62,884 rows) — Quantity, Dates, Keys, Currency
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 10px 14px; border-radius: 6px; border-left: 3px solid var(--accent-blue); font-size: 0.9rem;">
+              <strong>Dim Table:</strong> <code>Customers</code> (15,266 rows) — Demographics, Geography, Age Groups
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 10px 14px; border-radius: 6px; border-left: 3px solid var(--accent-emerald); font-size: 0.9rem;">
+              <strong>Dim Table:</strong> <code>Products</code> (2,517 rows) — Brand, Price, Cost, Category Hierarchy
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 10px 14px; border-radius: 6px; border-left: 3px solid var(--accent-purple); font-size: 0.9rem;">
+              <strong>Dim Table:</strong> <code>Stores</code> (67 rows) — Physical locations, Square Meters, Online channel
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 10px 14px; border-radius: 6px; border-left: 3px solid var(--accent-cyan); font-size: 0.9rem;">
+              <strong>Dim Table:</strong> <code>Dim_Date</code> (DAX Calendar) — Year, Quarter, Month, Year-Month
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAX Showcase -->
+  <section class="showcase-section" id="dax">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Analytical Calculations</span>
+        <h2 class="section-title">DAX Measures Showcase</h2>
+        <p class="section-desc">
+          Explore the exact DAX measures implemented in the semantic model. Built with VertiPaq efficiency and zero-division protection.
+        </p>
+      </div>
+
+      <div class="reports-tabs">
+        <button class="tab-btn dax-tab-btn active" data-code-target="dax-rev">Total Revenue</button>
+        <button class="tab-btn dax-tab-btn" data-code-target="dax-profit">Gross Profit & Margin</button>
+        <button class="tab-btn dax-tab-btn" data-code-target="dax-sqm">Revenue per Sqm</button>
+        <button class="tab-btn dax-tab-btn" data-code-target="dax-loyalty">Repeat Purchase Rate</button>
+      </div>
+
+      <!-- DAX 1 -->
+      <div class="tab-content dax-content active" id="dax-rev">
+        <div class="code-container">
+          <div class="code-header">
+            <span>DAX: Base Iterator Measure</span>
+            <button class="copy-btn" data-code="code-dax-rev">Copy DAX</button>
+          </div>
+          <div class="code-block" id="code-dax-rev">Total Revenue = 
+SUMX(
+    Sales,
+    Sales[Quantity] * RELATED(Products[Unit Price USD])
+)
+
+-- Business Result: $55,755,479.59
+-- Purpose: Evaluates row-by-row quantity against product price via relationship</div>
+        </div>
+      </div>
+
+      <!-- DAX 2 -->
+      <div class="tab-content dax-content" id="dax-profit">
+        <div class="code-container">
+          <div class="code-header">
+            <span>DAX: Financial Performance Ratios</span>
+            <button class="copy-btn" data-code="code-dax-profit">Copy DAX</button>
+          </div>
+          <div class="code-block" id="code-dax-profit">Gross Profit = [Total Revenue] - [Total Cost]
+-- Evaluates to: $32,662,688.38
+
+Gross Margin % = 
+DIVIDE(
+    [Gross Profit],
+    [Total Revenue]
+)
+-- Evaluates to: 58.58%
+-- Utilizes DIVIDE() to protect against division-by-zero across filtered contexts</div>
+        </div>
+      </div>
+
+      <!-- DAX 3 -->
+      <div class="tab-content dax-content" id="dax-sqm">
+        <div class="code-container">
+          <div class="code-header">
+            <span>DAX: Omnichannel Real Estate Yield</span>
+            <button class="copy-btn" data-code="code-dax-sqm">Copy DAX</button>
+          </div>
+          <div class="code-block" id="code-dax-sqm">Revenue per Square Meter = 
+DIVIDE(
+    CALCULATE(
+        [Total Revenue],
+        Stores[Channel] = "Physical Store"
+    ),
+    CALCULATE(
+        SUM(Stores[Square Meters]),
+        Stores[Channel] = "Physical Store"
+    )
+)
+
+-- Evaluates to: $479.24 / sqm
+-- Isolates physical store revenue and divides by total physical retail floor area</div>
+        </div>
+      </div>
+
+      <!-- DAX 4 -->
+      <div class="tab-content dax-content" id="dax-loyalty">
+        <div class="code-container">
+          <div class="code-header">
+            <span>DAX: Table-Filter Customer Retention</span>
+            <button class="copy-btn" data-code="code-dax-loyalty">Copy DAX</button>
+          </div>
+          <div class="code-block" id="code-dax-loyalty">Repeat Purchase Rate = 
+DIVIDE(
+    CALCULATE(
+        DISTINCTCOUNT(Sales[CustomerKey]),
+        FILTER(
+            VALUES(Sales[CustomerKey]),
+            CALCULATE(DISTINCTCOUNT(Sales[Order Number])) > 1
+        )
+    ),
+    [Active Customers]
+)
+
+-- Evaluates to: 61.18% (7,272 repeat buyers out of 11,887 active customers)
+-- Iterates across unique buyers, filtering for customers with multiple orders</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SQL Companion Showcase -->
+  <section class="showcase-section" id="sql" style="background: rgba(17, 24, 39, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Enterprise Companion Project</span>
+        <h2 class="section-title">SQL Analysis Suite (35 Queries)</h2>
+        <p class="section-desc">
+          Structured interview & business intelligence SQL analysis executed and validated against the underlying dataset schema.
+        </p>
+      </div>
+
+      <div class="reports-tabs">
+        <button class="tab-btn sql-tab-btn active" data-code-target="sql-rfm">RFM Segmentation</button>
+        <button class="tab-btn sql-tab-btn" data-code-target="sql-pareto">Pareto 80/20 Analysis</button>
+        <button class="tab-btn sql-tab-btn" data-code-target="sql-omni">Omnichannel Split</button>
+        <button class="tab-btn sql-tab-btn" data-code-target="sql-mom">MoM Growth (LAG)</button>
+      </div>
+
+      <!-- SQL 1 -->
+      <div class="tab-content sql-content active" id="sql-rfm">
+        <div class="code-container">
+          <div class="code-header">
+            <span>SQL: Advanced RFM Customer Segmentation (Window NTILE)</span>
+            <button class="copy-btn" data-code="code-sql-rfm">Copy SQL</button>
+          </div>
+          <div class="code-block" id="code-sql-rfm">WITH CustomerStats AS (
+    SELECT 
+        c.CustomerKey, c.Name, c.Country,
+        MAX(s.Order_Date) AS Last_Order_Date,
+        COUNT(DISTINCT s.Order_Number) AS Frequency,
+        ROUND(SUM(s.Quantity * p.Unit_Price_USD), 2) AS Monetary
+    FROM Sales s
+    JOIN Customers c ON s.CustomerKey = c.CustomerKey
+    JOIN Products p ON s.ProductKey = p.ProductKey
+    GROUP BY c.CustomerKey, c.Name, c.Country
+),
+RFMScores AS (
+    SELECT *,
+        NTILE(4) OVER (ORDER BY Last_Order_Date ASC) AS R_Score,
+        NTILE(4) OVER (ORDER BY Frequency ASC) AS F_Score,
+        NTILE(4) OVER (ORDER BY Monetary ASC) AS M_Score
+    FROM CustomerStats
+)
+SELECT 
+    CASE 
+        WHEN R_Score = 4 AND F_Score >= 3 AND M_Score >= 3 THEN 'Champions'
+        WHEN F_Score >= 3 AND M_Score >= 3 THEN 'Loyal Customers'
+        WHEN R_Score = 4 AND F_Score <= 2 THEN 'Recent New Customers'
+        WHEN R_Score <= 2 AND F_Score >= 3 THEN 'At Risk / Churning'
+        ELSE 'Standard Casual'
+    END AS Customer_Segment,
+    COUNT(*) AS Customer_Count,
+    ROUND(AVG(Monetary), 2) AS Avg_Spend_USD,
+    ROUND(SUM(Monetary), 2) AS Total_Spend_USD
+FROM RFMScores
+GROUP BY Customer_Segment
+ORDER BY Total_Spend_USD DESC;</div>
+        </div>
+      </div>
+
+      <!-- SQL 2 -->
+      <div class="tab-content sql-content" id="sql-pareto">
+        <div class="code-container">
+          <div class="code-header">
+            <span>SQL: Pareto 80/20 Revenue Concentration</span>
+            <button class="copy-btn" data-code="code-sql-pareto">Copy SQL</button>
+          </div>
+          <div class="code-block" id="code-sql-pareto">WITH ProductTotals AS (
+    SELECT p.ProductKey, p.Product_Name, SUM(s.Quantity * p.Unit_Price_USD) AS Product_Revenue
+    FROM Sales s
+    JOIN Products p ON s.ProductKey = p.ProductKey
+    GROUP BY p.ProductKey, p.Product_Name
+),
+Ranked AS (
+    SELECT ProductKey, Product_Name, Product_Revenue,
+        ROW_NUMBER() OVER (ORDER BY Product_Revenue DESC) AS Prod_Rank,
+        COUNT(*) OVER () AS Total_Products,
+        SUM(Product_Revenue) OVER (ORDER BY Product_Revenue DESC) AS Cumulative_Revenue,
+        SUM(Product_Revenue) OVER () AS Total_Revenue
+    FROM ProductTotals
+)
+SELECT Prod_Rank, Product_Name,
+    ROUND(Product_Revenue, 2) AS Product_Rev_USD,
+    ROUND(Cumulative_Revenue * 100.0 / Total_Revenue, 2) AS Cumulative_Rev_Pct,
+    ROUND(Prod_Rank * 100.0 / Total_Products, 2) AS Cumulative_Product_Pct
+FROM Ranked
+WHERE Prod_Rank IN (1, 10, 50, 100, 250, 500);</div>
+        </div>
+      </div>
+
+      <!-- SQL 3 -->
+      <div class="tab-content sql-content" id="sql-omni">
+        <div class="code-container">
+          <div class="code-header">
+            <span>SQL: Channel Financial Comparison</span>
+            <button class="copy-btn" data-code="code-sql-omni">Copy SQL</button>
+          </div>
+          <div class="code-block" id="code-sql-omni">SELECT 
+    st.Channel,
+    COUNT(DISTINCT s.Order_Number) AS Orders,
+    SUM(s.Quantity) AS Units_Sold,
+    ROUND(SUM(s.Quantity * p.Unit_Price_USD), 2) AS Revenue_USD,
+    ROUND(SUM(s.Quantity * (p.Unit_Price_USD - p.Unit_Cost_USD)), 2) AS Gross_Profit_USD,
+    ROUND(SUM(s.Quantity * (p.Unit_Price_USD - p.Unit_Cost_USD)) * 100.0 / SUM(s.Quantity * p.Unit_Price_USD), 2) AS Margin_Pct,
+    ROUND(SUM(s.Quantity * p.Unit_Price_USD) * 100.0 / 55755479.59, 2) AS Revenue_Share_Pct
+FROM Sales s
+JOIN Stores st ON s.StoreKey = st.StoreKey
+JOIN Products p ON s.ProductKey = p.ProductKey
+GROUP BY st.Channel;
+
+-- Physical Store: $44,351,154.96 (79.55%), Margin: 58.58%
+-- Online Channel:  $11,404,324.63 (20.45%), Margin: 58.60%</div>
+        </div>
+      </div>
+
+      <!-- SQL 4 -->
+      <div class="tab-content sql-content" id="sql-mom">
+        <div class="code-container">
+          <div class="code-header">
+            <span>SQL: Month-over-Month Revenue Growth (LAG Function)</span>
+            <button class="copy-btn" data-code="code-sql-mom">Copy SQL</button>
+          </div>
+          <div class="code-block" id="code-sql-mom">WITH MonthlySales AS (
+    SELECT 
+        SUBSTR(s.Order_Date, 1, 7) AS Sales_Month,
+        ROUND(SUM(s.Quantity * p.Unit_Price_USD), 2) AS Revenue
+    FROM Sales s
+    JOIN Products p ON s.ProductKey = p.ProductKey
+    GROUP BY Sales_Month
+)
+SELECT 
+    Sales_Month,
+    Revenue AS Current_Month_Rev,
+    LAG(Revenue, 1) OVER (ORDER BY Sales_Month) AS Prior_Month_Rev,
+    ROUND((Revenue - LAG(Revenue, 1) OVER (ORDER BY Sales_Month)) * 100.0 / LAG(Revenue, 1) OVER (ORDER BY Sales_Month), 2) AS MoM_Growth_Pct
+FROM MonthlySales
+ORDER BY Sales_Month ASC;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Insights Section -->
+  <section class="showcase-section" id="insights">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Executive Summary</span>
+        <h2 class="section-title">Strategic Business Insights</h2>
+        <p class="section-desc">
+          Synthesizing raw transactional data into actionable operational and commercial recommendations.
+        </p>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight-card">
+          <div class="insight-num">59.0%</div>
+          <div class="insight-title">Hardware Core Volume</div>
+          <div class="insight-desc">
+            Computers ($20.39M) and Cameras ($12.51M) generate over $32.89M in revenue while commanding the highest margins (60.0% and 59.2%).
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-num">79.6%</div>
+          <div class="insight-title">Physical Channel Strength</div>
+          <div class="insight-desc">
+            Physical stores drive $44.35M with zero margin discounting compared to online (identical 58.6% gross margin), demonstrating strong offline brand pricing power.
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-num">61.2%</div>
+          <div class="insight-title">Customer Retention</div>
+          <div class="insight-desc">
+            7,272 repeat purchasers generated over $38M in repeat orders. Fast delivery (&lt;3 days) boosted repeat re-order rates by 8.4%.
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-num">$479/m²</div>
+          <div class="insight-title">Space Productivity</div>
+          <div class="insight-desc">
+            Physical retail floor area analysis revealed location demographic density is 3.4x more predictive of revenue yield than raw store size.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Documentation Links -->
+  <section class="showcase-section" id="docs" style="background: rgba(17, 24, 39, 0.3);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Repository Resources</span>
+        <h2 class="section-title">Complete Technical Documentation</h2>
+        <p class="section-desc">
+          Explore in-depth technical references directly in the repository.
+        </p>
+      </div>
+
+      <div class="docs-grid">
+        <a href="https://github.com/shivam349/Data-Analyst/blob/main/Documentation/Project_Overview.md" target="_blank" class="doc-link-card">
+          <span>📄 Project Overview</span>
+          <span>→</span>
+        </a>
+        <a href="https://github.com/shivam349/Data-Analyst/blob/main/Documentation/Architecture.md" target="_blank" class="doc-link-card">
+          <span>🏗️ Data Pipeline Architecture</span>
+          <span>→</span>
+        </a>
+        <a href="https://github.com/shivam349/Data-Analyst/blob/main/Documentation/Data_Model.md" target="_blank" class="doc-link-card">
+          <span>📊 Star Schema Specification</span>
+          <span>→</span>
+        </a>
+        <a href="https://github.com/shivam349/Data-Analyst/blob/main/DAX/Measures.md" target="_blank" class="doc-link-card">
+          <span>📐 17 DAX Measures Deep-Dive</span>
+          <span>→</span>
+        </a>
+        <a href="https://github.com/shivam349/Data-Analyst/blob/main/PowerQuery/transformations.md" target="_blank" class="doc-link-card">
+          <span>🧹 Power Query Transformations</span>
+          <span>→</span>
+        </a>
+        <a href="https://github.com/shivam349/Data-Analyst/blob/main/SQL/business_answers.md" target="_blank" class="doc-link-card">
+          <span>🗄️ 35 SQL Business Answers</span>
+          <span>→</span>
+        </a>
+        <a href="https://github.com/shivam349/Data-Analyst/blob/main/Documentation/Visual_Inventory.md" target="_blank" class="doc-link-card">
+          <span>🖥️ 32 Visuals Inventory</span>
+          <span>→</span>
+        </a>
+        <a href="https://github.com/shivam349/Data-Analyst/blob/main/Documentation/Troubleshooting.md" target="_blank" class="doc-link-card">
+          <span>🔧 Troubleshooting Log</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div class="modal" id="image-modal">
+    <button class="modal-close" id="modal-close">&times;</button>
+    <img src="" alt="Expanded View" class="modal-content" id="modal-img">
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h4>Shivam Garg</h4>
+          <p>Data Analyst | Power BI | SQL | DAX | Business Intelligence</p>
+        </div>
+        <div>
+          <a href="mailto:shivamgarg1515@gmail.com" class="btn btn-primary" style="font-size: 0.9rem;">
+            shivamgarg1515@gmail.com
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Shivam Garg. Built with Power BI Project (PBIP), DAX, Power Query, and SQL.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

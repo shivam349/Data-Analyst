@@ -1,0 +1,10 @@
+# Power BI Developer Mode
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+.vscode/

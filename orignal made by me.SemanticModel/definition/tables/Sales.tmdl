@@ -1,0 +1,359 @@
+table Sales
+	lineageTag: b6c5c764-6c5d-4c2d-b75e-dc657ee030e7
+
+	measure 'Total Revenue' =
+			
+			SUMX(
+			    Sales,
+			    Sales[Quantity] * RELATED(Products[Unit Price USD])
+			)
+		lineageTag: d9b34f49-317d-4635-b5fa-456979fc7c61
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Cost' =
+			
+			SUMX(
+			    Sales,
+			    Sales[Quantity] * RELATED(Products[Unit Cost USD])
+			)
+		lineageTag: ad07ce7f-52cf-4dc3-930a-1731ae41109e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gross Profit' =
+			
+			[Total Revenue] - [Total Cost]
+		lineageTag: 23a33a0b-0fc1-4976-8318-39c18c8f7200
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gross Margin %' =
+			
+			DIVIDE(
+			    [Gross Profit],
+			    [Total Revenue]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 5fcc1165-3a0d-4346-b617-c91756946464
+
+	measure Orders =
+			
+			DISTINCTCOUNT(
+			    Sales[Order Number]
+			)
+		formatString: 0
+		lineageTag: 8c96e8f0-00d5-4019-9737-94ebc7bf9e9d
+
+	measure 'Units Sold' =
+			
+			SUM(
+			    Sales[Quantity]
+			)
+		formatString: 0
+		lineageTag: 7c24adb2-436d-4207-8dfd-f025040fe760
+
+	measure 'Active Customers' =
+			
+			DISTINCTCOUNT(
+			    Sales[CustomerKey]
+			)
+		formatString: 0
+		lineageTag: 1be50c5b-9a01-43c7-aa19-ace872830768
+
+	measure 'Average Order Value' =
+			
+			DIVIDE(
+			    [Total Revenue],
+			    [Orders]
+			)
+		lineageTag: 4a694eaa-cd31-42f1-ba86-68b56e832c43
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Revenue per Order' =
+			
+			DIVIDE(
+			    [Total Revenue],
+			    [Orders]
+			)
+		lineageTag: 1cbca2f3-4c90-4b5c-9c6f-f2f6f7ab8a01
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Units per Order' =
+			
+			DIVIDE(
+			    [Units Sold],
+			    [Orders]
+			)
+		lineageTag: 8c421f92-1b6b-4a74-9f02-9f6f0c5be0a1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Online Revenue' =
+			
+			CALCULATE(
+			    [Total Revenue],
+			    Stores[Channel] = "Online"
+			)
+		lineageTag: 3f7c2f9a-6c13-4e48-b52f-3dfaf9a4cb13
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Physical Store Revenue' =
+			
+			CALCULATE(
+			    [Total Revenue],
+			    Stores[Channel] = "Physical Store"
+			)
+		lineageTag: 7b3d79bb-e7fd-40f6-9b95-4b9b1e7c9a2a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Online Revenue %' =
+			
+			DIVIDE(
+			    [Online Revenue],
+			    [Total Revenue]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 9f6d0d8d-36d5-4f33-9cf7-8d1aa9ab65a3
+
+	measure 'Physical Revenue %' =
+			
+			DIVIDE(
+			    [Physical Store Revenue],
+			    [Total Revenue]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0dc3e8d5-71d4-4f10-a8a4-97a6eb4fef5e
+
+	measure 'Average Delivery Days' =
+			
+			CALCULATE(
+			    AVERAGEX(
+			        Sales,
+			        DATEDIFF(
+			            Sales[Order Date],
+			            Sales[Delivery Date],
+			            DAY
+			        )
+			    ),
+			    Stores[Channel] = "Online",
+			    NOT ISBLANK(Sales[Delivery Date])
+			)
+		lineageTag: 59e2d1fb-61c9-4a9a-a35a-7a1dff8c35f4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Revenue per Square Meter' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Total Revenue],
+			        Stores[Channel] = "Physical Store"
+			    ),
+			    CALCULATE(
+			        SUM(Stores[Square Meters]),
+			        Stores[Channel] = "Physical Store"
+			    )
+			)
+		lineageTag: 2dd6de7e-f5d3-4f56-8bb5-4c1ce233d8a0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Repeat Purchase Rate' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        DISTINCTCOUNT(Sales[CustomerKey]),
+			        FILTER(
+			            VALUES(Sales[CustomerKey]),
+			            CALCULATE(DISTINCTCOUNT(Sales[Order Number])) > 1
+			        )
+			    ),
+			    [Active Customers]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 3a6e0a6d-1a94-4ed3-bbb2-4df4e6d3e5a7
+
+	column 'Order Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: e8983a92-0975-47b6-9d20-4adf043222c0
+		summarizeBy: sum
+		sourceColumn: Order Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Item'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9aa92982-8221-4215-b44d-2e6e1674ac72
+		summarizeBy: sum
+		sourceColumn: Line Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ce21a792-0a25-42d2-8234-8a5390c91e34
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Delivery Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3a5772b1-d02d-48bc-9fd1-5ca42c2f0259
+		summarizeBy: none
+		sourceColumn: Delivery Date
+
+		variation Variation
+			isDefault
+			relationship: 9a1752f4-7c74-466a-a015-476082c508a2
+			defaultHierarchy: LocalDateTable_882ef746-f80f-43e2-b818-febcb033c466.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b61d28f-3982-443a-ae2e-db5058965cf5
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreKey
+		dataType: int64
+		formatString: 0
+		lineageTag: abc56f8d-41ab-430c-96f6-3f7dd60b79e9
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 9975ced0-0598-4260-a913-98e56e7a113e
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 853bdd88-38aa-4e11-9fa8-d6a8bdd3b5ff
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Currency Code'
+		dataType: string
+		lineageTag: 75f55556-305a-47b6-a96f-7ea3f9e1f3ab
+		summarizeBy: none
+		sourceColumn: Currency Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delivery Days' =
+			IF(
+			    ISBLANK(Sales[Delivery Date]),
+			    BLANK(),
+			    DATEDIFF(
+			        Sales[Order Date],
+			        Sales[Delivery Date],
+			        DAY
+			    )
+			)
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d2b2a51-2e8b-4e86-9cde-8f7c9d0cc1d4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition Sales = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(
+				        File.Contents("C:\Users\sbixb\Downloads\Global+Electronics+Retailer\Sales.csv"),
+				        [Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]
+				    ),
+				
+				    #"Promoted Headers" = Table.PromoteHeaders(
+				        Source,
+				        [PromoteAllScalars=true]
+				    ),
+				
+				    #"Changed Types" = Table.TransformColumnTypes(
+				        #"Promoted Headers",
+				        {
+				            {"Order Number", Int64.Type},
+				            {"Line Item", Int64.Type},
+				            {"CustomerKey", Int64.Type},
+				            {"StoreKey", Int64.Type},
+				            {"ProductKey", Int64.Type},
+				            {"Quantity", Int64.Type},
+				            {"Currency Code", type text}
+				        }
+				    ),
+				
+				    #"Fixed Order Date" = Table.TransformColumns(
+				        #"Changed Types",
+				        {
+				            {
+				                "Order Date",
+				                each
+				                    if _ = null or Text.Trim(Text.From(_)) = "" then
+				                        null
+				                    else
+				                        try
+				                            Date.FromText(
+				                                Text.Trim(Text.From(_)),
+				                                [Format="M/d/yyyy", Culture="en-US"]
+				                            )
+				                        otherwise null,
+				                type nullable date
+				            }
+				        }
+				    ),
+				
+				    #"Fixed Delivery Date" = Table.TransformColumns(
+				        #"Fixed Order Date",
+				        {
+				            {
+				                "Delivery Date",
+				                each
+				                    if _ = null or Text.Trim(Text.From(_)) = "" then
+				                        null
+				                    else
+				                        try
+				                            Date.FromText(
+				                                Text.Trim(Text.From(_)),
+				                                [Format="M/d/yyyy", Culture="en-US"]
+				                            )
+				                        otherwise null,
+				                type nullable date
+				            }
+				        }
+				    )
+				in
+				    #"Fixed Delivery Date"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,36 @@
+relationship AutoDetected_13e7d97e-a102-46a7-9dae-767866680f6c
+	fromColumn: Sales.CustomerKey
+	toColumn: Customers.CustomerKey
+
+relationship AutoDetected_d22c5c2e-8f77-4456-8647-c51000cd7aa3
+	fromColumn: Sales.ProductKey
+	toColumn: Products.ProductKey
+
+relationship 7abdff45-52eb-41ec-b5a7-df66f349fe6e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Customers.Birthday
+	toColumn: LocalDateTable_0959ea2b-d293-4225-9880-7ae1cc3a0d1d.Date
+
+relationship 9a1752f4-7c74-466a-a015-476082c508a2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Sales.'Delivery Date'
+	toColumn: LocalDateTable_882ef746-f80f-43e2-b818-febcb033c466.Date
+
+relationship AutoDetected_e8338ab8-a19f-4212-9ae5-cdf7ccec9fde
+	fromColumn: Sales.StoreKey
+	toColumn: Stores.StoreKey
+
+relationship 66d77bd5-6919-4c46-9228-53ffe45a4e87
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Stores.'Open Date'
+	toColumn: LocalDateTable_762cab66-709e-4d30-bc63-753bb937812b.Date
+
+relationship 61611b80-f7ce-4f66-903b-f8656ca3d728
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.Date
+	toColumn: LocalDateTable_5880f86e-b07f-4fe5-b492-8e71556c2ad1.Date
+
+relationship 572b24ad-b250-5f20-581f-7291db99346e
+	fromColumn: Sales.'Order Date'
+	toColumn: Dim_Date.Date
+
