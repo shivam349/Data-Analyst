@@ -23,11 +23,13 @@ Built in modern **Microsoft Fabric / Power BI Project (`.pbip`) Developer Mode**
 👉 **[View Portfolio Website on GitHub Pages](https://shivam349.github.io/Data-Analyst/)**
 
 ### 📊 Live Power BI Interactive Dashboard
-```
-LIVE POWER BI REPORT:
-[EMBED WILL BE ADDED HERE]
-```
-*(The website includes a dedicated embed container awaiting your Power BI Service public or secure iframe. See [Documentation/Adding_PowerBI_Embed.md](./Documentation/Adding_PowerBI_Embed.md) for insertion instructions.)*
+
+The interactive Power BI report is now **verified and embedded directly** on the live portfolio website:
+
+- 🌐 **Interactive Report on Portfolio Site**: [https://shivam349.github.io/Data-Analyst/#powerbi-live](https://shivam349.github.io/Data-Analyst/#powerbi-live)
+- 🔗 **Direct Power BI Service Report**: [Open Power BI View](https://app.powerbi.com/view?r=eyJrIjoiMjRiZTBjZDgtNTJkYS00ZDI0LWJkOTQtZGFiN2E1M2M3NDE5IiwidCI6IjQ1NDM5MDU5LWY3ZTItNGI0MC1iM2M0LWQzODdmOWI0OWJmMSJ9)
+
+> **Verified Live Embed**: Connected via Microsoft Power BI Publish-to-Web. Seamlessly delivers all 3 analytical pages (*Executive Overview*, *Customer & Product Intelligence*, *Store, Channel & Fulfillment*) with full cross-filtering, responsive aspect ratio, and full-screen support.
 
 ---
 

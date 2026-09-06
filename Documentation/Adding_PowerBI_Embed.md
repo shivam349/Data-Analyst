@@ -1,66 +1,94 @@
-# Future Power BI Embed Insertion Procedure
+# Verified Live Power BI Embed & Architecture
 
-This guide explains how to insert your real Power BI embed HTML/iframe into the GitHub Pages portfolio website when ready.
+This document details the live Power BI embed implemented on the **Global Electronics Retailer** portfolio website.
 
 ---
 
-## 1. Designated Embed Container
+## 1. Verified Live Embed Implementation
 
-The static portfolio website has already been built with a dedicated, responsive Power BI embed container located in [`index.html`](../index.html).
+The website uses Microsoft Power BI's **Publish to Web (Public)** feature to embed the complete interactive report.
 
-Locate this exact block in `index.html`:
+### Key Architecture Facts:
+- **One Unified Embed**: A single responsive iframe provides access to the entire multi-page report.
+- **Three Embedded Pages**: Users can navigate directly between all three pages via the built-in Power BI bottom page bar:
+  1. *Executive Overview*
+  2. *Customer & Product Intelligence*
+  3. *Store, Channel & Fulfillment*
+- **Report Separation**: The Power BI report runs as an independent cloud-hosted artifact rendered by Microsoft Power BI Service. The static GitHub Pages website serves as a portfolio presentation shell around the report without interfering with its internal VertiPaq calculation engine.
+
+---
+
+## 2. Exact Location in `index.html`
+
+The iframe is situated inside the `#powerbi-live-embed` container in [`index.html`](../index.html):
 
 ```html
+<!-- ============================================================ -->
 <!-- POWER BI EMBED START -->
+<!-- ============================================================ -->
 <div id="powerbi-live-embed" class="embed-wrapper">
-    <!-- REAL POWER BI EMBED HTML WILL BE INSERTED HERE -->
-    <div class="embed-placeholder">
-        <div class="placeholder-icon">
-            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-        </div>
-        <h3>Live Interactive Power BI Report</h3>
-        <p>The interactive Power BI embed iframe will be inserted here.</p>
-        <div class="embed-status">
-            <span class="pulse-dot"></span>
-            <span>Awaiting Embed Code</span>
-        </div>
-    </div>
+  <!-- REAL POWER BI EMBED HTML WILL BE INSERTED HERE -->
+  <iframe
+      title="orignal made by me"
+      width="600"
+      height="373.5"
+      src="https://app.powerbi.com/view?r=eyJrIjoiMjRiZTBjZDgtNTJkYS00ZDI0LWJkOTQtZGFiN2E1M2M3NDE5IiwidCI6IjQ1NDM5MDU5LWY3ZTItNGI0MC1iM2M0LWQzODdmOWI0OWJmMSJ9"
+      frameborder="0"
+      allowFullScreen="true">
+  </iframe>
 </div>
+<!-- ============================================================ -->
 <!-- POWER BI EMBED END -->
+<!-- ============================================================ -->
 ```
 
 ---
 
-## 2. Insertion Steps
+## 3. Responsive Styling Architecture
 
-When you generate your public or secure embed code from Power BI Service:
+While the default Power BI embed snippet specifies fixed dimensions (`width="600" height="373.5"`), our responsive design system in [`css/style.css`](../css/style.css) ensures optimal rendering across all device formats:
 
-1. Copy the embed `<iframe>` code provided by Power BI Service.
-   *(Example format: `<iframe title="..." width="100%" height="700" src="https://app.powerbi.com/view?r=..." frameborder="0" allowFullScreen="true"></iframe>`)*
-2. In [`index.html`](../index.html), replace **ONLY** the contents between:
-   `<!-- POWER BI EMBED START -->`  
-   and  
-   `<!-- POWER BI EMBED END -->`  
-   with your real `<iframe>` tag.
-3. **DO NOT** redesign or overwrite the rest of `index.html`.
-4. **DO NOT** modify the PBIP or semantic model files merely to add the iframe.
-5. Test locally by opening `index.html` in your browser to ensure the report renders cleanly and scales responsively.
+```css
+.embed-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 540px;
+  background: #0b0f19;
+  overflow: hidden;
+}
+
+.embed-wrapper iframe {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 540px;
+  border: 0 !important;
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .embed-wrapper, .embed-wrapper iframe {
+    min-height: 660px;
+  }
+}
+
+@media (max-width: 768px) {
+  .embed-wrapper, .embed-wrapper iframe {
+    min-height: 420px;
+    height: 460px;
+  }
+}
+```
 
 ---
 
-## 3. Commit & Deploy to GitHub Pages
+## 4. ⚠️ Power BI Data Privacy & Security Notice
 
-Once inserted, push the change:
+> [!WARNING]
+> **Microsoft Security Notice on Publish to Web:**
+> Microsoft documentation explicitly states: *"When you use Publish to web, anyone on the Internet can view your published report or visual. Viewing requires no authentication. It includes viewing detail-level data that your queries return. Only publish reports to the web that anyone on the Internet should be able to view."*
 
-```bash
-git add index.html
-git commit -m "Insert live Power BI embed iframe"
-git push origin main
-```
-
-The GitHub Actions workflow will automatically run, build, and deploy the updated page to your live GitHub Pages URL:  
-`https://shivam349.github.io/Data-Analyst/`
+### Security Compliance for this Portfolio:
+- **Public Portfolio Data Only**: This project utilizes anonymized demonstration dataset files (Global Electronics Retailer) intended for public educational and recruitment showcase.
+- **Zero Secrets or Credentials**: No database connection strings, passwords, personal tokens, or proprietary organizational data are included or exposed.
+- **Publish-to-Web Integrity**: Deleting or changing the Publish-to-Web link in Power BI Service will deactivate the iframe on the live website. Ensure the link remains active in your Power BI tenant.
