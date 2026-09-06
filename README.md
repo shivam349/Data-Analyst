@@ -312,7 +312,8 @@ Read full findings: 📑 [Business Insights Report](./Documentation/Business_Ins
 │   ├── Troubleshooting.md             # Technical data quality engineering log
 │   ├── Deployment.md                  # Fabric PBIP & version control guide
 │   ├── Business_Insights.md           # Strategic commercial findings
-│   └── Adding_PowerBI_Embed.md        # Step-by-step future embed guide
+│   ├── Adding_PowerBI_Embed.md        # Step-by-step Power BI embed guide
+│   └── Contact_Form.md                # Formspree contact form integration guide
 ├── PowerQuery/
 │   ├── README.md                      # ETL architecture overview
 │   ├── transformations.md             # Transformation breakdown per entity
@@ -344,3 +345,4 @@ Read full findings: 📑 [Business Insights Report](./Documentation/Business_Ins
 - **GitHub**: [@shivam349](https://github.com/shivam349)
 - **Repository**: [https://github.com/shivam349/Data-Analyst](https://github.com/shivam349/Data-Analyst)
 - **Live Portfolio Website**: [https://shivam349.github.io/Data-Analyst/](https://shivam349.github.io/Data-Analyst/)
+- **Live Contact Form**: Accessible directly on the live portfolio site at [https://shivam349.github.io/Data-Analyst/#contact](https://shivam349.github.io/Data-Analyst/#contact) (integrated with Formspree).

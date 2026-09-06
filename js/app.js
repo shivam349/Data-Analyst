@@ -105,5 +105,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
-  });
+  // 6. Contact Form Ajax Submission with Graceful Fallback
+  const contactForm = document.getElementById('portfolio-contact-form');
+  const submitBtn = document.getElementById('form-submit-btn');
+  const statusAlert = document.getElementById('form-status-alert');
+
+  if (contactForm && submitBtn) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      const originalBtnHtml = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+          <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
+          <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
+        </svg>
+        <span>Sending Message...</span>
+      `;
+
+      if (statusAlert) {
+        statusAlert.style.display = 'none';
+        statusAlert.className = 'form-status-alert';
+      }
+
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          if (statusAlert) {
+            statusAlert.textContent = '✓ Thank you! Your message has been sent successfully. Shivam will respond shortly.';
+            statusAlert.classList.add('success');
+            statusAlert.style.display = 'block';
+          }
+          contactForm.reset();
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (err) {
+        if (statusAlert) {
+          statusAlert.textContent = '✗ Submission failed. Please try again or email shivamgarg1515@gmail.com directly.';
+          statusAlert.classList.add('error');
+          statusAlert.style.display = 'block';
+        }
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+    });
+  }
 });
